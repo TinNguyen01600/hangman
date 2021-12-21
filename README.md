@@ -1,4 +1,5 @@
 HANG-MAN GAME
+<br>
 <br>#General Information</br>
 <ul>
 <li>This game is written in Python.</li>
