@@ -1,9 +1,11 @@
-#HANG-MAN GAME
-<br>General Information</br>
-<br>This game is written in Python.</br>
-<br>Game can be run on any computer system with installed python3.</br>
-<br>User also need to import module 'requests'.</br>
-<br>No graphic is supported.</br>
+<br>HANG-MAN GAME</br>
+#General Information
+<ul>
+<li>This game is written in Python.</li>
+<li>Game can be run on any computer system with installed python3.</li>
+<li>User also need to import module 'requests'.</li>
+<li>No graphic is supported.</li>
+</ul>
 #Setup
 <ul>
 <li>Download the hangman.py file</li>
