@@ -39,13 +39,37 @@ def draw():
     print("   |")
     print("___|________")
 
-word = init()
-print(word)
-for x in word:
-    print("- ", end = "")
-print()   
-#attempt = 1
-for attempt in range(6, -1, -1):
-    os.system("cls")
-    draw()
-    time.sleep(1)
+def new_game():
+    word = init()
+    print(word)
+    for x in word:
+       print("- ", end = "")
+    print() 
+
+def loop():
+    print("N - New game")
+    print("E - Exit")
+    n = input("")
+    if (n == "N" or n == "n"):
+        os.system("cls")
+        new_game()
+    elif (n == "E" or n == "e"):
+        print("Bye bye @(^_^)@ ")
+        time.sleep(1)
+        os.system("cls")
+        exit(0)
+    else:
+        print("Invalide option!!! Please try again.")
+        time.sleep(1.7)
+        os.system("cls")
+        loop()
+
+os.system("cls")
+print("HANG-MAN")
+loop()  
+
+#word = init()
+#print(word)
+#for x in word:
+#    print("- ", end = "")
+#print() 
