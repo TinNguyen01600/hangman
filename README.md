@@ -1,5 +1,5 @@
-<br>HANG-MAN GAME</br>
-#General Information
+HANG-MAN GAME
+<br>#General Information</br>
 <ul>
 <li>This game is written in Python.</li>
 <li>Game can be run on any computer system with installed python3.</li>
