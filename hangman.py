@@ -12,13 +12,13 @@ def init():
     return word
 
 def draw(attempt):
-    if attempt < 6: head = chr(212)
-    else : head = " "
+    if attempt < 6: head = chr(212)     #212 is the ASCII code for symbol Ô 
+    else : head = " "                   #if the attempt = 6, print nothing
 
     if attempt < 5: body = "|"
     else : body = " "
     
-    if attempt < 4: left_hand = chr(92)
+    if attempt < 4: left_hand = chr(92) #92 is the ASCII code for symbol \
     else: left_hand = " "
 
     if attempt < 3: right_hand = "/"
