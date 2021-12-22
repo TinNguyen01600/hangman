@@ -8,9 +8,10 @@ def init():
     response = requests.get(word_site)
     WORDS = response.content.splitlines()
     word = random.choice(WORDS)
+    word = word.decode('utf-8')         #decode word from byte object to string
     return word
 
-def draw():
+def draw(attempt):
     if attempt < 6: head = chr(212)
     else : head = " "
 
@@ -37,16 +38,54 @@ def draw():
     print("   |            ", left_leg, right_leg)
     print("   |")
     print("   |")
+    print("   |")
     print("___|________")
+    print()
 
+def play(attempt, word, temp):
+    while (attempt > 0):
+        draw(attempt)
+        count = 0
+        print ("You have %d attempts left" % (attempt))
+        c = input("Your guess: ")
+        for x in range(0, len(word)):
+            if c == word[x]:
+                count += 1
+                temp[x] = c
+        if count > 0: 
+            print("Well done!!! %d letter(s) '%c'" % (count, c))
+        else:
+            print("Oh no!!! There is no letter '%c'." % (c))
+            attempt -= 1
+        time.sleep(1.7)
+        os.system("cls")
+        string = " ".join(temp)
+        print ("The word has %d letters" % (len(word)))
+        print(string)
+    os.system("cls")
+    draw(attempt)
+    print("YOU LOST :((((")
+    print("The word is %s." % word)
+    time.sleep(2)
+    os.system("cls")
+    loop()
+   
 def new_game():
     word = init()
+
     print(word)
-    for x in word:
-       print("- ", end = "")
-    print() 
+
+    attempt = 6
+    print ("The word has %d letters" % (len(word)))
+    temp = list(word)
+    for x in range(0, len(temp)):
+        temp[x] = "-"
+    string = " ".join(temp)
+    print(string)
+    play(attempt, word, temp)
 
 def loop():
+    print("HANG-MAN")
     print("N - New game")
     print("E - Exit")
     n = input("")
@@ -65,11 +104,5 @@ def loop():
         loop()
 
 os.system("cls")
-print("HANG-MAN")
 loop()  
 
-#word = init()
-#print(word)
-#for x in word:
-#    print("- ", end = "")
-#print() 
