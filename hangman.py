@@ -85,7 +85,7 @@ def play(attempt, word, temp):
 
     if (attempt == 0):              #you have no more attempt left
         print("YOU LOST :((((")
-    elif (count_letter == len(word)):
+    elif (count_letter == len(word)):   #you already correctly guessed all the letters of the word
         print("Congratulations!!! YOU WON")
     draw(attempt)
     print("The word is %s." % word)
@@ -95,14 +95,12 @@ def play(attempt, word, temp):
    
 def new_game():
     word = init()
-
-    print(word)
-
-    attempt = 6
+    attempt = 6                     #the player has initially 6 tries
     print ("The word has %d letters" % (len(word)))
-    temp = list(word)
+    temp = list(word)               #this 'temp' variable is the list of letter of word
     for x in range(0, len(temp)):
-        temp[x] = "-"
+        temp[x] = "-"               #change all the letter into '-' in 'temp'
+                                    #because we cannot modify on string 'word'
     string = " ".join(temp)
     print(string)
     play(attempt, word, temp)
