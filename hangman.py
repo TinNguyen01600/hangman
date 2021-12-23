@@ -43,13 +43,15 @@ def draw(attempt):
     print()
 
 def play(attempt, word, temp):
-    while (attempt > 0):
+    count_letter = 0
+    while (attempt > 0 or count_letter != len(word)):
         draw(attempt)
         count = 0
         print ("You have %d attempts left" % (attempt))
         c = input("Your guess: ")
         for x in range(0, len(word)):
             if c == word[x]:
+                count_letter += 1
                 count += 1
                 temp[x] = c
         if count > 0: 
@@ -63,8 +65,11 @@ def play(attempt, word, temp):
         print ("The word has %d letters" % (len(word)))
         print(string)
     os.system("cls")
+    if (attempt == 0):
+        print("YOU LOST :((((")
+    elif (count_letter == len(word)):
+        print("Congratulations!!! YOU WON")
     draw(attempt)
-    print("YOU LOST :((((")
     print("The word is %s." % word)
     time.sleep(2)
     os.system("cls")
