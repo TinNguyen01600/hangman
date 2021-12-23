@@ -52,6 +52,7 @@ def play(attempt, word, temp):
 
         print ("You have %d attempts left    |    Tried letters: %s" % (attempt, tried))
         c = input("Your guess: ")       #your guess letter is stored in this variable c
+        
    
 #--------------------------------------------------------------------------------------------------
         while True:                                 #This part of code checks if the letter you entered
@@ -59,7 +60,10 @@ def play(attempt, word, temp):
             for x in tried:
                 if c == x:                          #if you enter a letter already exists in 'list'
                     count_repl_letter += 1          #the variable count_repl_letter increases by 1
-            if count_repl_letter > 0:
+            if (len(c) > 1):
+                print("!!! Invalid input !!!")
+                c = input("Please try again: ")
+            elif count_repl_letter > 0:
                 print("!!! You have already entered this letter !!!")
                 c = input("Please try another one: ")          #and you have to try another letter
             else:
