@@ -43,20 +43,32 @@ def draw(attempt):
     print()
 
 def play(attempt, word, temp):
-    count_letter = 0
-    tried = []                  #this string stores the letters you have entered
+    count_letter = 0            #this variable count_letter counts how many letter you guessed correctly
+    tried = []                  #this list stores the letters you have entered
     while (attempt > 0 and count_letter != len(word)):
         draw(attempt)
         count = 0
         #str_tried = " ".join(tried)
 
         print ("You have %d attempts left    |    Tried letters: %s" % (attempt, tried))
-        c = input("Your guess: ")
-
-        tried.append(c)
+        c = input("Your guess: ")       #your guess letter is stored in this variable c
+   
+#--------------------------------------------------------------------------------------------------
+        while True:                                 #This part of code checks if the letter you entered
+            count_repl_letter = 0                   #is already in the 'tried' list
+            for x in tried:
+                if c == x:                          #if you enter a letter already exists in 'list'
+                    count_repl_letter += 1          #the variable count_repl_letter increases by 1
+            if count_repl_letter > 0:
+                print("!!! You have already entered this letter !!!")
+                c = input("Please try another one: ")          #and you have to try another letter
+            else:
+                break                               #else (the letter you entered is not in 'list') you can exit the loop
+#-------------------------------------------------------------------------------------------------
+        tried.append(c)                 #add your guess letter to list 'tried'
 
         for x in range(0, len(word)):
-            if c == word[x]:
+            if c == word[x]:            #compare c to every letter in word
                 count_letter += 1
                 count += 1
                 temp[x] = c
@@ -71,7 +83,7 @@ def play(attempt, word, temp):
         print ("The word has %d letters" % (len(word)))
         print(string)
 
-    if (attempt == 0):
+    if (attempt == 0):              #you have no more attempt left
         print("YOU LOST :((((")
     elif (count_letter == len(word)):
         print("Congratulations!!! YOU WON")
@@ -116,4 +128,3 @@ def loop():                         #this function prints out the main menu
 
 os.system("cls")
 loop()  
-
