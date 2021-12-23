@@ -44,11 +44,17 @@ def draw(attempt):
 
 def play(attempt, word, temp):
     count_letter = 0
-    while (attempt > 0 or count_letter != len(word)):
+    tried = []                  #this string stores the letters you have entered
+    while (attempt > 0 and count_letter != len(word)):
         draw(attempt)
         count = 0
-        print ("You have %d attempts left" % (attempt))
+        #str_tried = " ".join(tried)
+
+        print ("You have %d attempts left    |    Tried letters: %s" % (attempt, tried))
         c = input("Your guess: ")
+
+        tried.append(c)
+
         for x in range(0, len(word)):
             if c == word[x]:
                 count_letter += 1
@@ -64,16 +70,16 @@ def play(attempt, word, temp):
         string = " ".join(temp)
         print ("The word has %d letters" % (len(word)))
         print(string)
-    os.system("cls")
+
     if (attempt == 0):
         print("YOU LOST :((((")
     elif (count_letter == len(word)):
         print("Congratulations!!! YOU WON")
     draw(attempt)
     print("The word is %s." % word)
-    time.sleep(2)
-    os.system("cls")
-    loop()
+    time.sleep(3)                   #delay for 3 seconds before clearing the screen
+    os.system("cls")                #clear the cmd screen
+    loop()                          #come back to main menu
    
 def new_game():
     word = init()
@@ -89,7 +95,7 @@ def new_game():
     print(string)
     play(attempt, word, temp)
 
-def loop():
+def loop():                         #this function prints out the main menu
     print("HANG-MAN")
     print("N - New game")
     print("E - Exit")
